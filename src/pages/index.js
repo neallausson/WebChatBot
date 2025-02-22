@@ -25,7 +25,7 @@ const Index = () => {
 
   // Initialisation de Socket.IO
   useEffect(() => {
-    socket.current = io("http://localhost:3002"); // Remplacez par votre URL serveur
+    socket.current = io("http://localhost:5005"); // Remplacez par votre URL serveur
     console.log("Socket connected");
 
     socket.current.on("chat message", (msg) => {
@@ -52,6 +52,7 @@ const Index = () => {
     if (message) {
       const formattedMessage = `${walletAddress}:${message}`;
       socket.current.emit("chat message", formattedMessage);
+      console.log(formattedMessage);
       inputRef.current.value = "";
     }
   };
