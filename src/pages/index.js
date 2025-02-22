@@ -25,7 +25,7 @@ const Index = () => {
 
   // Initialisation de Socket.IO
   useEffect(() => {
-    socket.current = io("http://localhost:5005"); // Remplacez par votre URL serveur
+    socket.current = io("http://13.61.17.62:5005"); // Remplacez par votre URL serveur
     console.log("Socket connected");
 
     socket.current.on("chat message", (msg) => {
