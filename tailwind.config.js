@@ -35,7 +35,7 @@ module.exports = {
         "130%": "130%",
       },
       /*backgroundImage: {
-        arena: "url('public/assets/diambra/arena.png')",
+        arena: "url('public/assets/LOP/arena.png')",
       },*/
     },
     screens: {

@@ -14,7 +14,7 @@ const Footer = () => {
               className="bg-gray-800 w-12 h-12 flex items-center justify-center rounded-lg"
             >
               <img
-                src="/assets/diambra/twitch.png"
+                src="/assets/LOP/twitch.png"
                 alt="Twitch"
                 className="w-6 h-6"
               />
@@ -37,7 +37,7 @@ const Footer = () => {
 
         {/* Logo Section */}
         <div className="text-center">
-          <p className="text-gray-600 font-spatialBlack text-3xl lg:text-[8rem]">DIAMBRA <span className="text-[#EDBB17]">AI</span></p>
+          <p className="text-gray-600 font-spatialBlack text-3xl lg:text-[8rem]">LOP <span className="text-[#EDBB17]">AI</span></p>
         </div>
 
         {/* Legal Links */}
@@ -45,7 +45,7 @@ const Footer = () => {
           <Link to="/terms">Terms of Use</Link>
           <Link to="/privacy">Privacy Policy</Link>
           <Link to="/cookies">Cookie Policy</Link>
-          <p>DIAMBRA, Inc. © Copyright 2018 - 2024. All rights reserved</p>
+          <p>LOP, Inc. © Copyright 2018 - 2024. All rights reserved</p>
         </div>
       </div>
     </footer>

@@ -9,7 +9,7 @@ const Index = () => {
   const socket = useRef(null);
 
   // Fonction de connexion au portefeuille Phantom
-  const connectWallet = async () => {
+  /*const connectWallet = async () => {
     if (window.solana && window.solana.isPhantom) {
       try {
         const response = await window.solana.connect();
@@ -21,12 +21,13 @@ const Index = () => {
     } else {
       alert("Phantom Wallet not found. Please install it.");
     }
-  };
-
+  };*/
+  
   // Initialisation de Socket.IO
   useEffect(() => {
-    socket.current = io("http://13.61.17.62:5005"); // Remplacez par votre URL serveur
+    socket.current = io("ws://localhost:5005"); // Remplacez par votre URL serveur
     console.log("Socket connected");
+    setWalletAddress("User");
 
     socket.current.on("chat message", (msg) => {
       setMessages((prevMessages) => [...prevMessages, msg]);
@@ -43,14 +44,14 @@ const Index = () => {
     e.preventDefault();
     const message = inputRef.current.value.trim();
 
-    if (!walletAddress) {
+    /*if (!walletAddress) {
       setError("Vous devez être connecté avec votre wallet pour envoyer un message.");
       setTimeout(() => setError(null), 5000); // Supprime le message d'erreur après 5 secondes
       return;
-    }
+    }*/
 
     if (message) {
-      const formattedMessage = `${walletAddress}:${message}`;
+      const formattedMessage = `User :${message}`;
       socket.current.emit("chat message", formattedMessage);
       console.log(formattedMessage);
       inputRef.current.value = "";
@@ -61,8 +62,7 @@ const Index = () => {
     <div className="min-h-screen flex flex-col">
       <header className="flex justify-between items-center p-4 bg-white">
         <button
-          onClick={connectWallet}
-          className="px-4 py-2 bg-blue-600 rounded hover:bg-blue-700 text-white"
+          className="hidden px-4 py-2 bg-blue-600 rounded hover:bg-blue-700 text-white"
         >
           {walletAddress
             ? `Wallet: ${walletAddress.slice(0, 6)}...`
@@ -96,7 +96,7 @@ const Index = () => {
           <ul className="messages space-y-2">
             {messages.map((msg, index) => {
               const [wallet, userMessage] = msg.split(":");
-              const isOwnMessage = wallet === walletAddress;
+              const isOwnMessage = wallet.trim() == walletAddress.trim();
 
               return (
                 <li
